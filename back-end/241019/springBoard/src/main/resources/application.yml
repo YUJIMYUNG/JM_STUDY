@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+
+
+  thymeleaf:
+    cache: false
+    check-template: true
+    prefix: classpath:templates/
+    suffix: .html
+
+  datasource:
+    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      ##???? ????
+      jdbc-url: jdbc:mysql://localhost:3306/board?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+      username: root
+      password: auddnjs20
+      #??? ??
+#      jdbc-url: jdbc:mysql://mydb.c72ss0somxra.ap-northeast-2.rds.amazonaws.com:3306/project?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+#      username: ${MYSQL_ID}
+#      password: ${MYSQL_PWD}
