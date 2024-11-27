@@ -14,7 +14,7 @@ public class ProductDto {
         this.price = price;
     }
 
-    //2-2. 전체제품 출력에 필요한 생성자(제품번호, 제품명, 가격)
+    //2-2. 전체제품 출력에 필요한 생성자(제품번호, 제품명, 가격), 제품 수정에 필요한 생성자
     public ProductDto(int idx, String name, int price) {
         this.idx = idx;
         this.name = name;
@@ -22,15 +22,6 @@ public class ProductDto {
     }
 
     //2-3. 제품 삭제에 필요한 생성자 X 객체 필요없어보임
-
-    //2-4. 제품 수정시 필요한 생성자- 제품명, 가격 따로 수정
-    public ProductDto(int price) {
-        this.price = price;
-    }
-
-    public ProductDto(String name) {
-        this.name = name;
-    }
 
     // 3. 메소드(멤버함수- getter, setter)
 
