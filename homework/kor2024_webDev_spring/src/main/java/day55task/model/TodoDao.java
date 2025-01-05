@@ -18,7 +18,6 @@ public class TodoDao {
         } catch (Exception e){
             e.getMessage();
             System.out.println("db연결 실패" + e.getMessage());
-            throw new RuntimeException("DB 연결 실패", e); // 초기화 실패 시 예외 발생
         }
     }// 생성자 end
 
@@ -70,13 +69,12 @@ public class TodoDao {
     //3. 할일 수정
     public boolean modify(TodoDto modifyTodoDto){
         try{
-            String sql = "update todo set todoContent =?, todoState = ? where todoNo =?";
+            String sql = "update todo set todoState = ? where todoNo =?";
 
             PreparedStatement ps = conn.prepareStatement(sql);
 
-            ps.setString(1, modifyTodoDto.getTodoContent());
-            ps.setBoolean(2, modifyTodoDto.isTodoState());
-            ps.setInt(3, modifyTodoDto.getTodoNo());
+            ps.setBoolean(1, modifyTodoDto.isTodoState());
+            ps.setInt(2, modifyTodoDto.getTodoNo());
 
             int result = ps.executeUpdate();
 
