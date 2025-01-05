@@ -20,7 +20,6 @@ function register(){
     const todo =  {
         todoNo : todoNoPK, todoContent : getTodoContent, todoState : false,
     }
-
     // fetch 처리
     let option = {
         method : 'POST',
@@ -30,10 +29,7 @@ function register(){
 
     fetch('/register', option)
         .then(respone => respone.json())
-        .then(data => {
-            console.log(data);
-            data.push(todo);
-        })
+        .then(data => {console.log(data);})
         .catch(error => {console.log(error);})
 
     //객체 저장 완료시 할일코드 +1
