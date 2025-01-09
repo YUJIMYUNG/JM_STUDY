@@ -9,9 +9,11 @@ import lombok.*;
 @ToString
 @Builder
 public class StudendtDto {
-    private int sNo;
-    private String sName;
-    private int sKor;
-    private int sMath;
-    private int sEng;
+    private int sno;
+    private String sname;
+    private int skor;
+    private int smath;
+    private int seng;
 }
+
+

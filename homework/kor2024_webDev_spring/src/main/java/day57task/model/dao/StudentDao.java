@@ -27,15 +27,17 @@ public class StudentDao {
         try{
             String sql = "insert into student(sName, sKor, sMath, sEng) values(?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, studendtDto.getSName());
-            ps.setInt(2, studendtDto.getSKor());
-            ps.setInt(3, studendtDto.getSMath());
-            ps.setInt(4, studendtDto.getSEng());
+            ps.setString(1, studendtDto.getSname());
+            ps.setInt(2, studendtDto.getSkor());
+            ps.setInt(3, studendtDto.getSmath());
+            ps.setInt(4, studendtDto.getSeng());
             int count = ps.executeUpdate();
+            System.out.println("Inserted row count: " + count);
+            System.out.println("studendtDto.getSName()" + studendtDto.getSname());
             if(count == 1 ) {return true;}
         }catch (Exception e){
             e.getMessage();
-            System.out.println(e);
+            e.printStackTrace();
         }
         return false;
     }
@@ -73,9 +75,9 @@ public class StudentDao {
             PreparedStatement ps = conn.prepareStatement(sql);
 
             //3. SQL 조작
-            ps.setInt(1, modifyStudentDto.getSKor());
-            ps.setInt(2, modifyStudentDto.getSMath());
-            ps.setInt(3, modifyStudentDto.getSEng());
+            ps.setInt(1, modifyStudentDto.getSkor());
+            ps.setInt(2, modifyStudentDto.getSmath());
+            ps.setInt(3, modifyStudentDto.getSeng());
             ps.setInt(4, sNo);
 
             //4. SQL실행결과
