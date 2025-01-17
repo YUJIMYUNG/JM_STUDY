@@ -3,6 +3,9 @@ package day64task.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "product")
 @Getter
@@ -21,4 +24,13 @@ public class ProductEntity extends BaseTime{
 
     @Column(columnDefinition = "int", nullable = false)
     private int pprice; // 제품가격
+
+    @JoinColumn(name = "cno")
+    @ManyToOne
+    private CategoryEntity categoryEntity;
+
+    @OneToMany(mappedBy = "productEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ToString.Exclude
+    @Builder.Default
+    List<OrderEntity> orderEntityList = new ArrayList<>();
 }

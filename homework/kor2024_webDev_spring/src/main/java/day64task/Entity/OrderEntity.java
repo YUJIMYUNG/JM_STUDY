@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 @Getter
 @Setter
 @Builder
@@ -19,5 +19,9 @@ public class OrderEntity extends BaseTime{
 
     @Column(columnDefinition = "int", nullable = false)
     private int oquantity;
+
+    @ManyToOne
+    @JoinColumn(name="pno")
+    private ProductEntity productEntity;
 
 }
