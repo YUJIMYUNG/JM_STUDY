@@ -30,7 +30,7 @@ public class MemberService {
         //1. DTO를 Entity로 변환한한 toMemberEntity를 가져옴
         MemberEntity memberEntity = memberDto.toMemberEntity();
 
-        // 2.
+        // 2. 변환된 엔티티를 Save하고 그 결과 entity를 반환 받는다.
         MemberEntity saveEntity = memberRepository.save(memberEntity);
 
         // 3. 회원가입 해놓고 mno가 제대로 생성 되었는지 여부 확인해서 return값 반환
@@ -41,75 +41,48 @@ public class MemberService {
         }// if- else end
     }// signup end
 
-//    // 2. 로그인 POST
-//    @PostMapping("/member/login")
-//    public boolean login(@RequestBody MemberDto memberDto){
-//        return memberService.login(memberDto);
-//    }
-//
-//    // 3. 전체 회원 목록 조회하기 G
-//    @GetMapping("/member/findAll")
-//    public List<MemberDto> findAll() {
-//        return memberService.findAll();
-//    }
-//
-//    // 4. 특정 회원 정보 조회하기 G
-//    public List<MemberDto> findIdInfo(@RequestParam int mno) {
-//        return memberService.findIdInfo(int mno);
-//    }
+    // 2. 로그인 POST
+    public boolean login(@RequestBody MemberDto loginMemberDto){
+        // 아이디, 비밀번호 샘플 데이터
+        String loginMid = "qwer";
+        String lonigMpwd = "1234";
 
-    // 13. 특정 회원이 제품을 주문
-    @Transactional
-    public boolean myProductOrder(@RequestBody OrderDto orderDto){
-        // 로그인 된 회원이 주문한다는 가정하기위해 로그인 mno 샘플값 넣어둠
-        int loginMno = 1;
-
-        // 1. 현재 회원번호의 회원엔티티 조회
-        Optional<MemberEntity> optionalMember = memberRepository.findById(loginMno);
-
-        // 조회된 엔티티가 없으면
-        if(optionalMember.isPresent() == false) {
-            return false; //false 로 반환
-        }// if end
-
-        MemberEntity memberEntity = optionalMember.get(); //
-
-        // 2. 주문 엔티티 생성
-        OrderEntity orderEntity = orderDto.toOrderEntity();
-
-        // 3. 주문 엔티티에 회원번호 넣어주기
-        orderEntity.setMemberEntity(memberEntity);
-
-        // 4. 주문 엔티티 꺼내기
-        OrderEntity saveEntity = orderRepository.save(orderEntity);
-
-        // 5. 엔티티 저장을 성공하면 PK번호(ono)를 확인하여 0보다 크면 성공
-        if(saveEntity.getOno() > 0 ) {
+        // 입력값 비교
+        if(loginMemberDto.getMid().equals(loginMid) && loginMemberDto.getMpwd().equals(lonigMpwd)) {
             return true;
-        } else {
-            return false;
-        }// if else end
-    }// myProductOrder
+        } return false; // if end
+    }// login end
 
-    // 14. 특정 회원이 주문한 제품 내역 조회 G
-    public List<OrderDto> myOrderList(@RequestParam int mno){
-        // 1. 특정회원(mno) 회원 엔티티를 찾는다.
-        Optional< MemberEntity> optionalMember = memberRepository.findById(mno);
+
+    // 3. 전체 회원 목록 조회하기 G
+    public List<MemberDto> findAllMember() {
+        //1. 모든 엔티티를 조회
+        List<MemberEntity> entityList = memberRepository.findAll();
+
+        //2. 모든 게시물 엔티티를 dto로 변환
+        List<MemberDto> list = entityList.stream()
+                .map(MemberEntity :: toMemberDto)
+                .collect(Collectors.toList());
+
+        return list;
+    } // findAlMember
+
+    // 4. 특정 회원 정보 조회하기 G
+    public MemberDto findMemberInfo(@RequestParam int mno) {
+        //1. 지정한 Mno의 회원 엔티티를 찾는다.
+        Optional<MemberEntity> optionalMember = memberRepository.findById(mno);
+
         if(optionalMember.isPresent()){
-            // findbyid로 찾은 회원번호의 엔티티가 존재하면
-            MemberEntity memberEntity = optionalMember.get(); // optional 객체에서 엔티티를 꺼냄
+            // 만약에 findNyId 함수로 찾은 Mno의 엔티티가 존재하면 Optional객체에서 엔티팉를 꺼낸다.
+            MemberEntity entity  = optionalMember.get();
 
-            // 2. 찾은 엔티티에서 양방향으로 설정된 주문리스트 조회
-            List< OrderEntity> orderEntityList = memberEntity.getOrderEntityList();
+            //2. 찾은 엔티티를 DTO로 변환
+            MemberDto findMemberDto = entity.toMemberDto();
 
-            // 3. 모든 주문 엔티티를 dtofh 변환
-            List<OrderDto> orderList = orderEntityList.stream()
-                    .map(OrderEntity :: toOrderDto)
-                    .collect(Collectors.toList());
-
-            // orderList 반환
-            return orderList;
-        }// if end
+            return findMemberDto;
+        }
         return null;
-    }// myOrderList end
+    }
+
+
 }

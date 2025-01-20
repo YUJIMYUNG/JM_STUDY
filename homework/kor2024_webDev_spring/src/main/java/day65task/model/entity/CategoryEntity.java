@@ -1,5 +1,6 @@
 package day65task.model.entity;
 
+import day65task.model.dto.CategoryDto;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,5 +26,11 @@ public class CategoryEntity {
     @Builder.Default
     List<ProductEntity> productEntityList = new ArrayList<>();
 
-
+    // entity --> dto로 변환
+    public CategoryDto toCategoryDto() {
+        return CategoryDto.builder()
+                .cno(this.cno)
+                .cname(this.cname)
+                .build();
+    }
 }

@@ -7,7 +7,6 @@ import lombok.*;
 @NoArgsConstructor @AllArgsConstructor
 public class OrderDto {
     private int ono;
-    private int oquantity;
     private boolean ostate;
     private String ocdate;// 주문시간
 
@@ -15,7 +14,6 @@ public class OrderDto {
     public OrderEntity toOrderEntity() {
         return OrderEntity.builder()
                 .ono(this.ono)
-                .oquantity(this.oquantity)
                 .ostate(this.ostate)
                 .build();
     }

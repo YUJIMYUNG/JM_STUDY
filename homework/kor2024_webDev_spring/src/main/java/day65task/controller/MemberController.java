@@ -21,49 +21,25 @@ public class MemberController {
         return memberService.signup(memberDto);
     }
 
-//    // 2. 로그인 POST
-//    @PostMapping("/member/login")
-//    public boolean login(@RequestBody MemberDto memberDto){
-//        return memberService.login(memberDto);
-//    }
-//
-//    // 3. 전체 회원 목록 조회하기 G
-//    @GetMapping("/member/findAll")
-//    public List<MemberDto> findAll() {
-//        return memberService.findAll();
-//    }
-//
-//    // 4. 특정 회원 정보 조회하기 G
-//    public List<MemberDto> findIdInfo(@RequestParam int mno) {
-//        return memberService.findIdInfo(int mno);
-//    }
-
-
-
-    // 9. 상품 등록 POST
-
-    // 10. 상품 수정 PUT
-
-    // 11. 상품 조회 G
-
-    // 12. 상품 삭제 D
-
-    // 13. 특정 회원이 제품을 주문 POST
-    @PostMapping("/member/product/order")
-    public boolean myProductOrder(@RequestBody OrderDto orderDto){
-        return memberService.myProductOrder(orderDto);
+    // 2. 로그인 POST
+    @PostMapping("/member/login")
+    public boolean login(@RequestBody MemberDto loginMemberDto){
+        return memberService.login(loginMemberDto);
     }
 
-    // 14. 특정 회원이 주문한 제품 내역 조회 G
-    @GetMapping("/member/product/find")
-    public List<OrderDto> myOrderList(@RequestParam int mno){
-        return memberService.myOrderList(mno);
+    // 3. 전체 회원 목록 조회하기 G
+    @GetMapping("/member/findAllMember")
+    public List<MemberDto> findAllMember() {
+        return memberService.findAllMember();
     }
 
-    // 15. 주문내역 수정(주문상품의 갯수) PUT
+    // 4. 특정 회원 정보 조회하기 G
+    public MemberDto findMemberInfo(@RequestParam int mno) {
+        return memberService.findMemberInfo(mno);
+    }
 
 
-    // 16. 주문 삭제 D
+
 
 
 

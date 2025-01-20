@@ -1,5 +1,7 @@
 package day65task.model.entity;
 
+import day65task.model.dto.CategoryDto;
+import day65task.model.dto.ProductDto;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,6 +26,16 @@ public class ProductEntity {
     @ManyToOne
     @JoinColumn(name = "cno") // 카테고리테이블에 cno를 참조함
     private CategoryEntity categoryEntity;
+
+    // entity --> Dto로 변환
+    public ProductDto toProductDto() {
+        return ProductDto.builder()
+                .pno(this.pno)
+                .pname(this.pname)
+                .pstock(this.pstock)
+                .pprice(this.pprice)
+                .build();
+    }
 
 
 }
