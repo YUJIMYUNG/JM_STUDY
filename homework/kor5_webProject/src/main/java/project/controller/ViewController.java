@@ -60,10 +60,16 @@ public class ViewController {
         return "/appointment/list.html";
     }
 
-    // 9. (환자별/의사별)예약조회화면
-    @GetMapping("/appointment/info")
-    public String appointmentFindId() {
-        return "/appointment/info.html";
+    // 9. (의사별)예약조회화면
+    @GetMapping("/appointment/doctorlist")
+    public String appointmentFindDoctor() {
+        return "/appointment/doctorlist.html";
+    }
+
+    // 10. (환자별)예약조회화면
+    @GetMapping("/appointment/patientlist")
+    public String appointmentFindPatient() {
+        return "/appointment/patientlist.html";
     }
 
 }

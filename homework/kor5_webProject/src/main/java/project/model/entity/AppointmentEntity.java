@@ -47,6 +47,8 @@ public class AppointmentEntity extends BaseTime{
                 .createdate(this.getCdate().toString())
                 .patientid(patientEntity.getPatientid())
                 .doctorid(doctorEntity.getDoctorid())
+                .patientname(patientEntity.getName())
+                .doctorname(doctorEntity.getName())
                 .build();
     }
 

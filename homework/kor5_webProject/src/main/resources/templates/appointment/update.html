@@ -9,29 +9,34 @@
     <div th:replace="~{ /header.html :: header }"></div>
 
     <div class="container">
-        <h2> 의사 등록 </h2>
+        <h2> 진료/예약 등록하기 </h2>
 
         <div class="registerBox">
             <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">이름</span>
-                <input type="text" class="form-control nameInputValue" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <span class="input-group-text" id="inputGroup-sizing-default">환자 번호</span>
+                <input type="text" class="form-control patientNumInputValue" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
             </div>
             <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">연락처</span>
-                <input type="text" class="form-control phoneInputValue" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <span class="input-group-text" id="inputGroup-sizing-default">의사 번호</span>
+                <input type="text" class="form-control doctorNumInputValue" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
             </div>
             <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">전공</span>
-                <input type="text" class="form-control majorInputValue" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <span class="input-group-text" id="inputGroup-sizing-default">예약 날짜</span>
+                <input type="text" class="form-control dateInputValue" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">예약 시간</span>
+                <input type="text" class="form-control timeInputValue" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
             </div>
 
             <div style="display: flex; justify-content: center;">
-                <button type="submit" class="btn btn-success" onclick="onRegister()">등록하기</button>
+                <button type="button" class="btn btn-success" onclick="onRegister()">등록하기</button>
+                <button type="button" class="btn btn-success" onclick="onUpdate()">수정하기</button>
             </div>
         </div>
         
     </div>
 
-    <script src="/js/doctor/register.js"></script>
+    <script src="/js/appointment/update.js"></script>
 </body>
 </html>

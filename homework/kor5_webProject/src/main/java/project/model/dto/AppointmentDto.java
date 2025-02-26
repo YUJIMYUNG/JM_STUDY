@@ -18,11 +18,14 @@ public class AppointmentDto {
     private int doctorid; // 의사번호 fk
     private int patientid; //환자번호 fk
 
+    private String doctorname; //의사 이름
+    private String patientname; //환자 이름
+
     public AppointmentEntity toEntity() {
         return AppointmentEntity
                 .builder()
                 .appointmentid(appointmentid)
-                .status(this.status)
+                .status(this.status != 0 ? this.status : 1)
                 .appointmentdate(this.appointmentdate)
                 .appointmenttime(this.appointmenttime)
                 .build();
