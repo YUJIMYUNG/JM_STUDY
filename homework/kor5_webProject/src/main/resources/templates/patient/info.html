@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div th:replace="~{ /header.html :: header }"></div>
+
+    
+    <div class="container">
+        <h2>환자 상세정보</h2>
+        <div class="infobox">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">이름</span>
+                <input type="text" class="form-control name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">생년월일</span>
+                <input type="text" class="form-control birth" aria-label="Sizing example input" readonly aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">연락처</span>
+                <input type="text" class="form-control phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">주소</span>
+                <input type="text" class="form-control address" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">등록날짜</span>
+                <input type="text" class="form-control cdate" aria-label="Sizing example input" readonly  aria-describedby="inputGroup-sizing-default">
+            </div>
+
+        </div>
+
+        <div class="btnBox">
+            <button class="btn btn-info" onclick="onUpdateBtn()">환자 정보 수정하기</button>
+            <button class="btn btn-danger">환자 정보 삭제하기</button>
+        </div>
+    </div>
+
+    <script src="/js/patient/info.js"></script>
+</body>
+</html>

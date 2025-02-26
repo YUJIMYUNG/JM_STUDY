@@ -20,25 +20,25 @@ public class PatientController {
 
     // 2. 환자 목록조회
     @GetMapping("/patient/findall.do")
-    public List<PatientDto> patienFindAll(){
-        return pateintService.patienFindAll();
+    public List<PatientDto> patientFindAll(){
+        return pateintService.patientFindAll();
     }
 
     // 3. 환자 상세조회
     @GetMapping("/patient/findid.do")
-    public PatientDto patienFindId(@RequestParam int patienId) {
-        return pateintService.patienFindId(patienId);
+    public PatientDto patientFindId(@RequestParam int patientId) {
+        return pateintService.patientFindId(patientId);
     }
 
     // 4. 환자 정보 수정
     @PutMapping("/patient/update.do")
-    public boolean patientUpdate(@RequestBody PatientDto patientDto){
-        return pateintService.patientUpdate(patientDto);
+    public boolean patientUpdate(@RequestParam int updatedPatientId, @RequestBody PatientDto updatePatientDto){
+        return pateintService.patientUpdate(updatedPatientId, updatePatientDto);
     }
 
-    // 5. 환자 삭제("/patient/register.do")
+    // 5. 환자 삭제
     @DeleteMapping("/patient/delete.do")
-    public boolean patientDelete(@RequestParam int patienId){
-        return pateintService.patientDelete(patienId);
+    public boolean patientDelete(@RequestParam int deletePatientId){
+        return pateintService.patientDelete(deletePatientId);
     }
 }

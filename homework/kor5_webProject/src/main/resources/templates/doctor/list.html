@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+
+    <div th:replace="~{ /header.html :: header }"></div>
+
+    
+    
+    <div class="container">
+        <h2> 의사 목록</h2>
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>순번</th>
+                    <th>이름</th>
+                    <th>연락처</th>
+                    <th>전공</th>
+                    <th>등록날짜</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="/js/doctor/list.js"></script>
+</body>
+</html>

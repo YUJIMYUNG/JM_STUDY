@@ -2,6 +2,9 @@ package project.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.springframework.stereotype.Component;
 import project.model.dto.AppointmentDto;
 
 @Entity
@@ -11,6 +14,8 @@ import project.model.dto.AppointmentDto;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@DynamicInsert
+@Component
 public class AppointmentEntity extends BaseTime{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,13 +26,14 @@ public class AppointmentEntity extends BaseTime{
     private String appointmenttime; //예약된 시간
 
     @Column(columnDefinition = "tinyint")
+    @ColumnDefault("1") // 1 - 접수됨, 0 - 취소됨
     private int status; // 접수상태
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "patientid")
     private PatientEntity patientEntity; // 환자 fk
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "doctorid")
     private  DoctorEntity doctorEntity; // 의사 fk
 
