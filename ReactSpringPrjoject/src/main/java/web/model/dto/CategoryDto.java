@@ -2,6 +2,7 @@ package web.model.dto;
 
 import jakarta.persistence.*;
 import lombok.*;
+import web.model.entity.CategoryEntity;
 
 @Builder
 @ToString
@@ -11,9 +12,17 @@ import lombok.*;
 @Setter
 public class CategoryDto {
 
-    private int index;
+    private int cindex;
     private String name;
     private String color;
+
+    public CategoryEntity toEntity() {
+        return CategoryEntity.builder()
+                .cindex(this.cindex)
+                .name(this.name)
+                .color(this.color)
+                .build();
+    }
 
 
 }

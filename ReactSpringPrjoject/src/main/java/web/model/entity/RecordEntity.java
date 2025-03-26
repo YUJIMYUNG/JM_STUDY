@@ -2,6 +2,7 @@ package web.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import web.model.dto.RecordDto;
 
 @Builder
 @ToString
@@ -26,6 +27,19 @@ public class RecordEntity {
 
     @Column(columnDefinition = "int", nullable = false)
     private String duration; // 공부시간(분단위)
+
+    // 작성자번호(FK)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "mno")
+    private UserEntity userEntity;
+
+    public RecordDto toDto() {
+        return RecordDto.builder()
+                .rindex(this.rindex)
+                .title(this.title)
+                .duration(this.duration)
+                .build();
+    }
 
 
 }

@@ -12,14 +12,17 @@ import web.model.entity.UserEntity;
 @Setter
 public class UserDto {
     private int uindex;
-    private String uname;
+    private String nickname;
     private String email;
     private String password;
+
+    private String signupdate;
+    private String modificationdate;
 
     public UserEntity toEntity() {
         return UserEntity.builder()
                 .uindex(this.uindex)
-                .uname(this.uname)
+                .nickname(this.nickname)
                 .email(this.email)
                 .password(new BCryptPasswordEncoder().encode(this.password))
                 .build();

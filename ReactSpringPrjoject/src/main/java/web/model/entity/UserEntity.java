@@ -16,24 +16,27 @@ public class UserEntity extends BaseTime{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int uindex;
+    private int uindex; // 회원번호
 
     @Column(columnDefinition = "varchar(100)", nullable = false, unique = true)
-    private String uname;
+    private String nickname; // 회원닉네임
 
 
     @Column(columnDefinition = "varchar(100)", nullable = false, unique = true)
-    private String email;
+    private String email; //회원이메일
 
     @Column(columnDefinition = "varchar(255)", nullable = false, unique = true)
-    private String password;
+    private String password; //회원비밀번호
+
 
     public UserDto toDto() {
         return UserDto.builder()
                 .uindex(this.uindex)
-                .uname(this.uname)
+                .nickname(this.nickname)
                 .password(this.password)
                 .email(this.email)
+                .signupdate(this.getCreatedate().toString())
+                .modificationdate(this.getUpdatedate().toString())
                 .build();
     }
 
